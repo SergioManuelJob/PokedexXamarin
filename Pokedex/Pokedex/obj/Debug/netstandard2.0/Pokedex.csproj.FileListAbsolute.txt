@@ -14,3 +14,4 @@ C:\Users\ext-ssuarez\Desktop\Formación\Pokedex\Pokedex\obj\Debug\netstandard2.0
 C:\Users\ext-ssuarez\Desktop\Formación\Pokedex\Pokedex\obj\Debug\netstandard2.0\refint\Pokedex.dll
 C:\Users\ext-ssuarez\Desktop\Formación\Pokedex\Pokedex\obj\Debug\netstandard2.0\Pokedex.pdb
 C:\Users\ext-ssuarez\Desktop\Formación\Pokedex\Pokedex\obj\Debug\netstandard2.0\ref\Pokedex.dll
+C:\Users\ext-ssuarez\Desktop\Formación\Pokedex\Pokedex\obj\Debug\netstandard2.0\Views\Pokemon\Detailpokemon.xaml.g.cs

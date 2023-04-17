@@ -6,7 +6,12 @@
     <Grid RowDefinitions="70,*"
           BackgroundColor="#1i1i1i">
         <StackLayout Orientation="Horizontal">
-            <Image Source="https://i.ibb.co/6XxdC32/left-arrow.png"/>
+            <Image Source="https://i.ibb.co/6XxdC32/left-arrow.png"
+                   >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding goBackcommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
             <Image Source="https://i.ibb.co/fxRqv1V/International-Pok-mon-logo-svg.png" Margin="50,0,0,0"/>
         </StackLayout>
         <StackLayout Grid.Row="1" 
@@ -27,7 +32,8 @@
                        FontAttributes="Bold"
                        FontSize="20"
                        HorizontalOptions="StartAndExpand"
-                       TextColor="#E4D27D"/>
+                       TextColor="#E4D27D"
+                       Text="{Binding Txtname}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
@@ -42,7 +48,8 @@
                        FontAttributes="Bold"
                        FontSize="20"
                        HorizontalOptions="StartAndExpand"
-                       TextColor="#E4D27D"/>
+                       TextColor="#E4D27D"
+                       Text="{Binding Txtnumber}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
@@ -57,7 +64,8 @@
                        FontAttributes="Bold"
                        FontSize="20"
                        HorizontalOptions="StartAndExpand"
-                       TextColor="#E4D27D"/>
+                       TextColor="#E4D27D"
+                       Text="{Binding Txttype}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
@@ -72,7 +80,8 @@
                        FontAttributes="Bold"
                        FontSize="20"
                        HorizontalOptions="StartAndExpand"
-                       TextColor="#E4D27D"/>
+                       TextColor="#E4D27D"
+                       Text="{Binding Txttypecolor}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
@@ -87,7 +96,8 @@
                        FontAttributes="Bold"
                        FontSize="20"
                        HorizontalOptions="StartAndExpand"
-                       TextColor="#E4D27D"/>
+                       TextColor="#E4D27D"
+                       Text="{Binding Txtbgcolor}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
@@ -102,7 +112,8 @@
                        FontAttributes="Bold"
                        FontSize="20"
                        HorizontalOptions="StartAndExpand"
-                       TextColor="#E4D27D"/>
+                       TextColor="#E4D27D"
+                       Text="{Binding Txtimage}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" 
                          HorizontalOptions="Center"
@@ -122,28 +133,28 @@
                 <Frame Grid.Row="1"
                        WidthRequest="250"
                        HorizontalOptions="Center"
-                       BackgroundColor="OrangeRed"
+                       BackgroundColor="{Binding Txtbgcolor}"
                        CornerRadius="15"
                        Margin="0,-30,0,0"
                        Padding="30">
                     <StackLayout
                         Margin="0,35,0,0">
-                        <Label Text="#447"
+                        <Label Text="{Binding Txtnumber}"
                                FontAttributes="Bold"
                                FontSize="20"/>
                         <Label FontAttributes="Bold"
                             FontSize="20"
-                            Text="Riolu"
+                            Text="{Binding Txtname}"
                                Margin="0,0,0,10"/>
-                        <Button Text="Fighting"
-                                Background="red"
+                        <Button Text="{Binding Txttype}"
+                                BackgroundColor="{Binding Txttypecolor}"
                                 HorizontalOptions="Start"
                                 CornerRadius="5"
                                 HeightRequest="40"
                                 WidthRequest="120"/>
                     </StackLayout>
                 </Frame>
-                <Image Source="https://i.ibb.co/Kx4n6ND/800px-Riolu.png" 
+                <Image Source="{Binding Txtimage}" 
                        Grid.RowSpan="2"
                        HeightRequest="180"
                        VerticalOptions="StartAndExpand"/>
@@ -159,7 +170,8 @@
                         BackgroundColor="#E4D27D"
                         FontAttributes="Bold"
                         TextColor="#1i1i1i"
-                        FontSize="20"/>
+                        FontSize="20"
+                        Command="{Binding insertPokemoncommand}"/>
             </Frame>
         </StackLayout>
     </Grid>

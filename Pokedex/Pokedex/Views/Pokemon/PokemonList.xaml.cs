@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Pokedex.ViewModels.VMpokemon;
 
 namespace Pokedex.Views.Pokemon
 {
@@ -15,6 +16,7 @@ namespace Pokedex.Views.Pokemon
         public PokemonList()
         {
             InitializeComponent();
+            BindingContext = new VMpokemonlist(Navigation);
         }
     }
 }

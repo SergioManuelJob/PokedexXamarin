@@ -13,7 +13,7 @@ namespace Pokedex
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new CreatePokemon());
+            MainPage = new NavigationPage(new PokemonList());
         }
 
         protected override void OnStart()

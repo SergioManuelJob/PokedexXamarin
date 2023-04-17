@@ -12,8 +12,68 @@
                VerticalOptions="Center"
               />
         <CollectionView BackgroundColor="FloralWhite"
-                        Grid.Row="1">
-            
+                        Grid.Row="1"
+                        ItemsSource="{Binding pokemons}"
+                        x:Name="list">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 HorizontalItemSpacing="6"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate >
+                <DataTemplate>
+                    <Grid RowDefinitions="100,*"
+                          Margin="0,0,0,0">
+                        <Frame Grid.Row="1"
+                       WidthRequest="250"
+                       HorizontalOptions="Center"
+                       BackgroundColor="{Binding Colorfondo}"
+                       CornerRadius="15"
+                       Margin="6,-30,6,0"
+                       Padding="30">
+                            <StackLayout
+                        Margin="0,60,0,0">
+                                <Label Text="{Binding Nroorden}"
+                               FontAttributes="Bold"
+                               FontSize="15"/>
+                                <Label FontAttributes="Bold"
+                            FontSize="24"
+                            Text="{Binding Nombre}"
+                               Margin="0,0,0,10"/>
+                                <Button Text="{Binding Tipo}"
+                                BackgroundColor="{Binding Colortipo}"
+                                HorizontalOptions="Start"
+                                CornerRadius="5"
+                                HeightRequest="40"
+                                WidthRequest="120"
+                                Command="{Binding Path=BindingContext.goToDetailcommand, Source={x:Reference list}}"
+                                CommandParameter="{Binding .}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Image Source="{Binding Imagen}" 
+                       Grid.RowSpan="2"
+                       HeightRequest="140"
+                       VerticalOptions="StartAndExpand"
+                        Margin="0,20,0,0"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.goToDetailcommand, Source={x:Reference list}}"
+                                                  CommandParameter="{Binding .}"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button Text="+"
+                Grid.Row="1"
+                HeightRequest="80"
+                WidthRequest="80"
+                CornerRadius="50"
+                Margin="0,0,10,10"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                BackgroundColor="#EC9AA3"
+                FontSize="30"
+                FontAttributes="Bold"
+                Command="{Binding goToRegistercommand}"/>
     </Grid>
 </ContentPage>

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using MvvmGuia.VistaModelo;
+using Pokedex.Data;
+using Pokedex.Models;
 
 namespace Pokedex.ViewModels.VMpokemon
 {
@@ -57,9 +59,23 @@ namespace Pokedex.ViewModels.VMpokemon
         }
         #endregion
         #region PROCESOS
-        public async Task ProcesoAsyncrono()
+        public async Task insertPokemon()
         {
+            var function = new Dpokemon();
+            var parameters = new Mpokemon();
+            parameters.Colorfondo = Txtbgcolor;
+            parameters.Nombre = Txtname;
+            parameters.Nroorden = Txtnumber;
+            parameters.Imagen = Txtimage;
+            parameters.Colortipo = Txttypecolor;
+            parameters.Tipo = Txttype;
 
+            await function.InsertPokemon(parameters);
+            await goBack();
+        }
+        public async Task goBack()
+        {
+           await Navigation.PopAsync();
         }
         public void ProcesoSimple()
         {
@@ -67,7 +83,8 @@ namespace Pokedex.ViewModels.VMpokemon
         }
         #endregion
         #region COMANDOS
-        public ICommand ProcesoAsyncommand => new Command(async () => await ProcesoAsyncrono());
+        public ICommand goBackcommand => new Command(async () => await goBack());
+        public ICommand insertPokemoncommand => new Command(async () => await insertPokemon());
         public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
         #endregion
     }
