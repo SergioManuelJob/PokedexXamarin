@@ -15,6 +15,8 @@ namespace Pokedex.Data
     {
         public async Task InsertPokemon(Mpokemon pokemon)
         {
+            List<string> list = new List<string>();
+            list.Add("https://i.ibb.co/9wcGfDs/1200px-Growlithe-de-Hisui.png");
             await Cconnection.firebaseClient
                 .Child("Pokemon")
                 .PostAsync(new Mpokemon()
@@ -25,6 +27,7 @@ namespace Pokedex.Data
                     Nombre = pokemon.Nombre,  
                     Nroorden = pokemon.Nroorden,    
                     Tipo = pokemon.Tipo,
+                    Forms = list.ToArray()
                 }
                 );
         }
@@ -42,12 +45,8 @@ namespace Pokedex.Data
                      Imagen = item.Object.Imagen,
                      Colorfondo=item.Object.Colorfondo, 
                      Colortipo=item.Object.Colortipo,    
+                     Forms = item.Object.Forms
                  });
-            /*var data = await Task.Run( ()=> Cconnection.firebaseClient
-                 .Child("Pokemon")
-                 .AsObservable<Mpokemon>()
-                 .AsObservableCollection());
-            return data;*/
         }
     }
 }

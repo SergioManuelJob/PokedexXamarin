@@ -21,17 +21,20 @@ namespace Pokedex.ViewModels.VMpokemon
         public VMdetallepokemon(INavigation navigation, Mpokemon pokemon)
         {
             Navigation = navigation;
-            assignPokemon(pokemon);
+            mpokemon = pokemon;
+            if(mpokemon.Forms == null)
+            {
+                List<string> list = new List<string>();
+                list.Add("https://i.ibb.co/3134kkG/5a4613ddd099a2ad03f9c994.png");
+                mpokemon.Forms = list.ToArray();
+            }
         }
         #endregion
         #region OBJETOS
 
         #endregion
         #region PROCESOS
-        public async Task assignPokemon(Mpokemon pokemon)
-        {
-            await Task.Run( () => mpokemon = pokemon); 
-        }
+
         public async Task goBack()
         {
             await Navigation.PopAsync();

@@ -13,6 +13,7 @@ namespace Pokedex.Models
         public string Nroorden { get; set; }
         public string Imagen { get; set; }
         public string Id { get; set; }
+        public string[] Forms { get; set; }
 
     }
 }
