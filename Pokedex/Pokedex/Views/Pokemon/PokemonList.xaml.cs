@@ -13,10 +13,18 @@ namespace Pokedex.Views.Pokemon
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PokemonList : ContentPage
     {
+        VMpokemonlist vm;
         public PokemonList()
         {
             InitializeComponent();
-            BindingContext = new VMpokemonlist(Navigation);
+            vm = new VMpokemonlist(Navigation);
+            BindingContext = vm;
+            this.Appearing += PokemonList_Appearing;
+        }
+
+        private async void PokemonList_Appearing(object sender, EventArgs e)
+        {
+            await vm.getPokemon();
         }
     }
 }

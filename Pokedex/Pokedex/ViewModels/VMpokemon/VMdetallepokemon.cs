@@ -21,15 +21,17 @@ namespace Pokedex.ViewModels.VMpokemon
         public VMdetallepokemon(INavigation navigation, Mpokemon pokemon)
         {
             Navigation = navigation;
-            mpokemon = pokemon;
-            fondo = mpokemon.Colorfondo; 
-            tipo = mpokemon.Tipo;
+            assignPokemon(pokemon);
         }
         #endregion
         #region OBJETOS
 
         #endregion
         #region PROCESOS
+        public async Task assignPokemon(Mpokemon pokemon)
+        {
+            await Task.Run( () => mpokemon = pokemon); 
+        }
         public async Task goBack()
         {
             await Navigation.PopAsync();

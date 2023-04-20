@@ -11,13 +11,15 @@ using Pokedex.Views.Pokemon;
 using Pokedex.Data;
 using Pokedex.Models;
 using System.Collections.ObjectModel;
+using System.Collections;
+using System.Linq;
 
 namespace Pokedex.ViewModels.VMpokemon
 {
     public class VMpokemonlist:BaseViewModel
     {
         #region VARIABLES
-        ObservableCollection<Mpokemon> _pokemons = new ObservableCollection<Mpokemon>();
+        List<Mpokemon> _pokemons = new List<Mpokemon>();
         #endregion
         #region CONSTRUCTOR
         public VMpokemonlist(INavigation navigation)
@@ -27,11 +29,10 @@ namespace Pokedex.ViewModels.VMpokemon
         }
         #endregion
         #region OBJETOS
-        public ObservableCollection<Mpokemon> pokemons
+        public List<Mpokemon> pokemons
         {
             get { return _pokemons; }
             set { SetValue(ref _pokemons, value);
-                OnPropertyChanged();
             }
         }
         #endregion
@@ -39,7 +40,9 @@ namespace Pokedex.ViewModels.VMpokemon
         public async Task getPokemon()
         {
             var funcion = new Dpokemon();
-            pokemons = await funcion.GetPokemon();
+            var pokemonsGet = await funcion.GetPokemon();
+            pokemons = pokemonsGet.ToList<Mpokemon>();
+            pokemons = pokemons.OrderBy(pokemons => pokemons.Nroorden).ToList();
         }
         public async Task goToRegister()
         {

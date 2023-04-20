@@ -28,9 +28,9 @@ namespace Pokedex.Data
                 }
                 );
         }
-        public async Task<ObservableCollection<Mpokemon>> GetPokemon()
+        public async Task<IEnumerable<Mpokemon>> GetPokemon()
         {
-            /*return (await Cconnection.firebaseClient
+            return (await Cconnection.firebaseClient
                  .Child("Pokemon")
                  .OnceAsync<Mpokemon>())
                  .Select(item => new Mpokemon
@@ -42,12 +42,12 @@ namespace Pokedex.Data
                      Imagen = item.Object.Imagen,
                      Colorfondo=item.Object.Colorfondo, 
                      Colortipo=item.Object.Colortipo,    
-                 });*/
-            var data = await Task.Run( ()=> Cconnection.firebaseClient
+                 });
+            /*var data = await Task.Run( ()=> Cconnection.firebaseClient
                  .Child("Pokemon")
                  .AsObservable<Mpokemon>()
                  .AsObservableCollection());
-            return data;
+            return data;*/
         }
     }
 }
